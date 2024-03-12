@@ -14,7 +14,7 @@ const Login = () => {
     }
     if (username === "user" && password === "password") {
       setIsLoginSuccess(true);
-      setIsPasswordDontMatch(false); // Reset incorrect password message
+      setIsPasswordDontMatch(false); 
     } else {
       setIsLoginSuccess(false);
       setIsPasswordDontMatch(true);
@@ -41,7 +41,7 @@ const Login = () => {
           <form
             onSubmit={handleSubmit}
           >
-            <label htmlFor="username">
+            {/* <label htmlFor="username">
               Username:
               <input
                 type="text"
@@ -49,8 +49,15 @@ const Login = () => {
                 value={username}
                 onChange={handleUsername}
               />
-            </label>
-            <label htmlFor="password">
+            </label> */}
+            <label htmlFor="username">Username:</label>
+            <input
+                type="text"
+                required
+                value={username}
+                onChange={handleUsername}
+              />
+            {/* <label htmlFor="password">
               Password:
               <input
                 type="password"
@@ -58,7 +65,14 @@ const Login = () => {
                 value={password}
                 onChange={handlePassword}
               />
-            </label>
+            </label> */}
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                required
+                value={password}
+                onChange={handlePassword}
+              />
             <button style={{ width: "60px" }} type="submit">
               Submit
             </button>
