@@ -8,7 +8,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if(username==""||password=="")
+    {
+        return
+    }
     if (username === "user" && password === "password") {
       setIsLoginSuccess(true);
       setIsPasswordDontMatch(false); // Reset incorrect password message
@@ -17,6 +20,15 @@ const Login = () => {
       setIsPasswordDontMatch(true);
     }
   };
+  const handleUsername=(e)=>{
+    setUsername(e.target.value)
+  }
+
+  const handlePassword=(e)=>{
+    setPassword(e.target.value)
+  }
+  
+
 
   return (
     <>
@@ -27,11 +39,6 @@ const Login = () => {
           <h1>Login Page</h1>
           {isPasswordDontMatch && <div>Invalid username or password</div>}
           <form
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
             onSubmit={handleSubmit}
           >
             <label htmlFor="username">
@@ -40,7 +47,7 @@ const Login = () => {
                 type="text"
                 required
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsername}
               />
             </label>
             <label htmlFor="password">
@@ -49,7 +56,7 @@ const Login = () => {
                 type="password"
                 required
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePassword}
               />
             </label>
             <button style={{ width: "60px" }} type="submit">
